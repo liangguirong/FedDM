@@ -172,11 +172,8 @@ if __name__ == '__main__':
     if args.dataset == 'skin':
         args.n_classes = 7
         snapshot_path = 'model/skin/'
-    if not os.path.isdir(snapshot_path):
-        os.mkdir(snapshot_path)
     logger.info(str(args))
     print('==> Reloading data partitioning strategy..')
-    assert os.path.isdir('partition_strategy'), 'Error: no partition_strategy directory found!'
     n_classes = args.n_classes
     X_train, y_train, X_test, y_test, net_dataidx_map, traindata_cls_counts = partition_data_allnoniid(args,
         args.dataset, args.datadir, partition=args.partition, n_parties=total_num, beta=args.beta,n_classes=n_classes) #加了net_dataidx_map, traindata_cls_counts
